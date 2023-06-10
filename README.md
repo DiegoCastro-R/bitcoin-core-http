@@ -33,7 +33,7 @@ This is an API that interacts with a Bitcoin Core node using RPC calls. It provi
 4. Start the API server:
 
    ```bash
-   npm start
+   npm dev
    ```
 
 5. The API will be accessible at the URL provided in the ENV variable.
