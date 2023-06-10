@@ -1,0 +1,26 @@
+{
+  "name": "bitcoin-core-node-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only ./src/app/index.ts"
+  },
+  "author": "diego.rodrigues@growtisolutions.com",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3",
+    "ts-node-dev": "^2.0.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/swagger-ui-express": "^4.1.3",
+    "@types/yamljs": "^0.2.31",
+    "typescript": "^5.1.3"
+  }
+}

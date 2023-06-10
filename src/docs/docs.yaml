@@ -1,0 +1,457 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Bitcoin Core - HTTP Client
+  description: API for interacting with the blockchain using HTTP methods
+
+tags:
+  - name: Blockchain
+    description: Endpoints related to blockchain operations
+schemes:
+  - http
+paths:
+  /blockchain/getbestblockhash:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve the hash of the best (tip) block in the longest blockchain
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: string
+  /blockchain/getblock:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve a block by its block hash
+      parameters:
+        - name: blockHash
+          in: query
+          description: The block hash
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: object
+                # Define the properties of the block object
+  /blockchain/getblockchaininfo:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve various information about the blockchain
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: object
+                # Define the properties of the blockchain information object
+  # Define other endpoints similarly for the remaining RPCs
+  /blockchain/getblockcount:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve the current block height in the longest blockchain
+      responses:
+         200:
+           description: Successful response
+           schema:
+             type: object
+             properties:
+               response:
+                 type: integer
+  /blockchain/getblockfilter:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve the basic filter for a specified block
+      parameters:
+        - name: blockHash
+          in: query
+          description: The block hash
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: string
+  /blockchain/getblockhash:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve the block hash of a specific block height
+      parameters:
+        - name: blockHeight
+          in: query
+          description: The block height
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: string
+  /blockchain/getblockheader:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve the header of a block by its block hash
+      parameters:
+        - name: blockHash
+          in: query
+          description: The block hash
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: object
+                # Define the properties of the block header object
+  /blockchain/getblockstats:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve statistical information about a given block
+      parameters:
+        - name: blockHash
+          in: query
+          description: The block hash
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: object
+                # Define the statistical information properties
+  /blockchain/getchaintips:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve information about all known blockchain tips
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  # Define the properties of the blockchain tip object
+  /blockchain/getchaintxstats:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve statistics about the total number and rate of transactions in the blockchain
+      parameters:
+        - name: nBlocks
+          in: query
+          description: The number of blocks to consider
+          required: false
+          type: integer
+        - name: blockHash
+          in: query
+          description: The block hash to start counting from
+          required: false
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: object
+                # Define the transaction statistics properties
+  /blockchain/getdifficulty:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve the current difficulty of the proof-of-work algorithm
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: number
+  /blockchain/getmempoolancestors:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve all in-mempool ancestors for a given transaction
+      parameters:
+        - name: transactionId
+          in: query
+          description: The ID of the transaction
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  # Define the properties of the transaction object
+  /blockchain/getmempooldescendants:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve all in-mempool descendants for a given transaction
+      parameters:
+        - name: transactionId
+          in: query
+          description: The ID of the transaction
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: array
+                items:
+                  type: object
+                  # Define the properties of the transaction object
+  /blockchain/getmempoolentry:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve information about a specific transaction in the mempool
+      parameters:
+        - name: transactionId
+          in: query
+          description: The ID of the transaction
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: object
+                # Define the properties of the transaction object
+  /blockchain/getmempoolinfo:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve information about the current state of the mempool
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: object
+                # Define the mempool information properties
+  /blockchain/getrawmempool:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve a list of transaction hashes in the mempool
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: array
+                items:
+                  type: string
+  /blockchain/gettxout:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve information about a specific unspent transaction output (UTXO)
+      parameters:
+        - name: transactionId
+          in: query
+          description: The ID of the transaction
+          required: true
+          type: string
+        - name: vout
+          in: query
+          description: The output index (vout)
+          required: true
+          type: integer
+        - name: includeMempool
+          in: query
+          description: Whether to include mempool transactions or not
+          required: false
+          type: boolean
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: object
+                # Define the properties of the UTXO object
+  /blockchain/gettxoutproof:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve a proof that a specific transaction is included in a block
+      parameters:
+        - name: transactionIds
+          in: query
+          description: Comma-separated list of transaction IDs
+          required: true
+          type: string
+        - name: blockHash
+          in: query
+          description: The block hash to search for the transaction(s)
+          required: false
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: string
+  /blockchain/gettxoutsetinfo:
+    get:
+      tags:
+        - Blockchain
+      summary: Retrieve statistical information about the unspent transaction output set
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              response:
+                type: object
+                # Define the unspent transaction output set information properties
+  /blockchain/preciousblock:
+    post:
+      tags:
+        - Blockchain
+      summary: Mark a block as precious, indicating it should not be pruned
+      parameters:
+        - name: blockHash
+          in: query
+          description: The block hash
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+  /blockchain/pruneblockchain:
+    post:
+      tags:
+        - Blockchain
+      summary: Prune blocks from the local blockchain up to a specified height or timestamp
+      parameters:
+        - name: height
+          in: query
+          description: The block height to prune up to
+          required: false
+          type: integer
+        - name: timestamp
+          in: query
+          description: The timestamp to prune up to
+          required: false
+          type: integer
+      responses:
+        200:
+          description: Successful response
+  /blockchain/savemempool:
+    post:
+      tags:
+        - Blockchain
+      summary: Save the mempool to disk
+      responses:
+        200:
+          description: Successful response
+  /blockchain/scantxoutset:
+    post:
+      tags:
+        - Blockchain
+      summary: Perform a scan of the unspent transaction output set for a given descriptor
+      parameters:
+        - name: descriptors
+          in: body
+          description: The descriptors to scan
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        200:
+          description: Successful response
+  /blockchain/verifychain:
+    post:
+      tags:
+        - Blockchain
+      summary: Verify the local blockchain database
+      parameters:
+        - name: checkLevel
+          in: query
+          description: The level of thoroughness for the verification (0-4)
+          required: false
+          type: integer
+        - name: numBlocks
+          in: query
+          description: The number of blocks to verify (default: all)
+          required: false
+          type: integer
+      responses:
+        200:
+          description: Successful response
+  /blockchain/verifytxoutproof:
+    get:
+      tags:
+        - Blockchain
+      summary: Verify a proof that a specific transaction is included in a block
+      parameters:
+        - name: proof
+          in: query
+          description: The transaction proof
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
