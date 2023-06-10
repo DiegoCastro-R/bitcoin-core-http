@@ -2,6 +2,13 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+
+![Bitcoin](https://img.shields.io/badge/Bitcoin-000?style=for-the-badge&logo=bitcoin&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
+### Working in progress...
+#### Stay updated and feel free to make contributions:
+
 ## Description
 
 This is an API that interacts with a Bitcoin Core node using RPC calls. It provides functionalities to make RPC requests and retrieve information from the Bitcoin Core node.
