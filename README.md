@@ -23,7 +23,7 @@ This is an API that interacts with a Bitcoin Core node using RPC calls. It provi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/diegocastro-r/your-repo.git
+   git clone https://github.com/diegocastro-r/bitcoin-core-http.git
    ```
 
 2. Install the dependencies:
